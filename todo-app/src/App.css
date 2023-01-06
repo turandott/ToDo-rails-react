@@ -37,8 +37,11 @@
     }
 }
 
-ul.taskList {
+.taskList {
     padding: 0 25px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    column-gap: 60%;
 }
 
 li.task {
@@ -46,7 +49,10 @@ li.task {
     font-family: Tahoma;
     font-size: 1.2em;
     padding: 10px 0;
-    border-bottom: 1px solid #ccc;
+}
+
+p.task-text {
+
 }
 
 li.task:hover .deleteTaskBtn {
@@ -82,11 +88,11 @@ input.taskCheckbox:checked:after {
     bottom: 2px;
 }
 
-input.taskCheckbox+label.taskLabel {
+input.taskCheckbox + label.taskLabel {
     color: black;
 }
 
-input.taskCheckbox:checked+label.taskLabel {
+input.taskCheckbox:checked + label.taskLabel {
     text-decoration: line-through;
     color: #656565;
 }
@@ -96,7 +102,7 @@ input[placeholder] {
 }
 
 .container {
-    width: 40%;
+    width: 60%;
     height: 400px;
     position: relative;
     margin: 0 auto;
@@ -144,4 +150,29 @@ input[placeholder] {
     line-height: 0;
     margin-right: 5px;
     cursor: default;
+}
+.delete-btn{
+    height: 20%;
+    align-self: center;
+    /* сброс стилей */
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    /* переопределение стилей для ссылок */
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    /* небольшие вертикальные отступы */
+    margin: 2px 0;
+    /* невидимая рамка */
+    border: solid 1px transparent;
+    border-radius: 4px;
+    /* для установки размеров используем паддинги */
+    padding: 0.5em 1em;
+    /* контрастные цвета */
+    color: #ffffff;
+    background-color: #9555af;
 }

@@ -2,5 +2,5 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 20.times do |i|
-  Task.create(title: "Task ##{i}", description: "Today that date", status: "progress")
+  Todo.create(title: "Task ##{i}", description: "Today that date", status: "progress")
 end
