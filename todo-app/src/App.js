@@ -16,14 +16,13 @@ const url = "/api/v1/todos";
 
 
 function App() {
-
+const token=localStorage.getItem('token')||null
     const [currUser, setCurrUser]=useState(null)
     const [show, setShow]=useState(true)
-if(!currUser){
+console.log(` current user is ${currUser}`)
+if(!token){
     return<User currUser={currUser} setCurrUser={setCurrUser}/>
 }
-
-
 
     return (
         <div className='App'>
