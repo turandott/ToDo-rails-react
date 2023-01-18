@@ -1,12 +1,13 @@
-function Sidebar({notes,
+function Sidebar({
+                     notes,
                      onAddNote,
                      onDeleteNote,
                      activeNote,
                      setActiveNote
-                 }){
-    const sortedNotes=notes.sort((a,b)=>b.lastModified-a.lastModified)
+                 }) {
+    const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified)
 
-    return(
+    return (
 
         <div className="app-sidebar">
             <div className="app-sidebar-header">
@@ -14,17 +15,22 @@ function Sidebar({notes,
                 <button onClick={onAddNote}>Add</button>
             </div>
             <div className="app-sidebar-notes">
-                {sortedNotes.map((note)=>(
-                    <div key={note.id} className={`app-sidebar-note ${note.id===activeNote && "active"}`}
-                          onClick={()=>setActiveNote(note.id)}>
+                {sortedNotes.map((note) => (
+                    <div key={note.id} className={`app-sidebar-note ${note.id === activeNote && "active"}`}
 
+                         onClick={() => setActiveNote(note.id)}>
                         <div className="sidebar-note-title">
-                            <strong>{note.title}</strong>
 
-                            <button onClick={()=>onDeleteNote(note.id)}>Delete</button>
+                            <strong style={{
+                                textDecoration: note.status=='done' && 'line-through',
+                                color: note.status=='draft' && 'grey'
+                            }}>{note.title}</strong>
+
+
+                            <button onClick={() => onDeleteNote(note.id)}>Delete</button>
                         </div>
 
-                        <p>{note.description&& note.description.substr(0,100)+"..."}</p>
+                        <p>{note.description && note.description.substr(0, 100) + "..."}</p>
 
                         <small className="note-meta">
                             Last modified {" "}
@@ -39,4 +45,5 @@ function Sidebar({notes,
         </div>
     )
 }
+
 export default Sidebar;

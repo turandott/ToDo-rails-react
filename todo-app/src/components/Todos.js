@@ -37,6 +37,7 @@ function Todos() {
             id:uuid(),
             title: 'Untitled',
             description:'Empty',
+            status:'active',
             lastModified:Date.now(),
         }
         try {

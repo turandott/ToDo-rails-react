@@ -155,6 +155,9 @@ textarea {
     font-size: 1rem;
     line-height: 2rem;
 }
+.selector{
+    margin-bottom: 5px;
+}
 /*NAVBAR*/
 .navbar {
     width: 100%;

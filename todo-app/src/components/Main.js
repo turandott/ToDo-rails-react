@@ -17,10 +17,20 @@ function Main({ activeNote, onUpdateNote }){
     return(
         <div className="app-main">
             <div className="app-main-note-edit">
+                <select className="selector"
+                        id="status"
+                        value={activeNote.status}
+                        onChange={(e)=>onEditField("status", e.target.value)}
+                >
+                    <option value="draft">draft</option>
+                    <option value="active">active</option>
+                    <option value="done">done</option>
+                </select>
                 <input type="text" id="title"
                        value={activeNote.title}
                        onChange={(e)=>onEditField("title", e.target.value)}
                        autoFocus/>
+
                 <textarea id="description" placeholder="Write your note here.."
                           value={activeNote.description}
                           onChange={(e)=>onEditField("description", e.target.value)}/>
