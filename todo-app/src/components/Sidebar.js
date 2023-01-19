@@ -34,7 +34,7 @@ function Sidebar({
 
                         <small className="note-meta">
                             Last modified {" "}
-                            {new Date(note.lastModified).toLocaleDateString("en-GB", {
+                            {new Date(note.updated_at).toLocaleDateString("en-GB", {
                                 hour: "2-digit",
                                 minute: "2-digit",
                             })}

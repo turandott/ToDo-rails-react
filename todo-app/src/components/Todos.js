@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import Main from "./Main";
 import axios from 'axios';
 
-const url = "/api/v1/todos";
+const url = "http://localhost:3000/api/v1/todos";
 
 function Todos() {
     const [notes, setNotes]=useState([]);
@@ -14,8 +14,15 @@ function Todos() {
         getNotes();
     }, []);
 
+
+    const headers={
+            'Content-Type' : 'application/json',
+            'Accept' : 'application/json',
+            'Authorization' : `${localStorage.getItem('token')}`
+        }
+
     function getNotes() {
-        axios.get(url)//возвращает промис
+        axios.get(url, {headers})//возвращает промис
             .then((response) => {
                 setNotes(response.data)
                 console.log(response.data)
@@ -24,7 +31,7 @@ function Todos() {
 
     function onDeleteNote(id, title) {
         console.log(id)
-        axios.delete(`${url}/${id}`)
+        axios.delete(`${url}/${id}`, {headers})
             .then(() => {
                 alert(`Post ${title} deleted`);
                 //props.stopPropagation()//?
@@ -38,11 +45,12 @@ function Todos() {
             title: 'Untitled',
             description:'Empty',
             status:'active',
-            lastModified:Date.now(),
+            created_at:Date.now(),
+            // user_id:2,
         }
         try {
             console.log(`final data ${newNote}`)
-            const response = await axios.post(url, newNote);
+            const response = await axios.post(url, newNote, {headers});
             const allNotes = [response.data, ...notes]
             setNotes(allNotes)
             alert(`${newNote.title} task was created`)
@@ -65,7 +73,7 @@ function Todos() {
             }
             return note
         })
-        axios.put(`${url}/${activeNote}`, updatedNote)
+        axios.put(`${url}/${activeNote}`, updatedNote,{headers})
                     .then(response=>console.log(response))
                     //setNotes(updatedNotesArray))
 
